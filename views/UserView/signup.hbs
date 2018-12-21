@@ -1,0 +1,47 @@
+<div class="span9">
+	{{#if hasErrors}}
+		<div class="alert alert-danger">
+			{{# each messages }}
+			<p>{{this}}</p>
+			{{/each}}
+		</div>
+
+
+	{{/if}}
+	<div class="well">
+	<form class="form-horizontal" action="/user/signup" method="post">
+		<h3>Sign Up</h3>
+		
+		<div class="control-group">
+			<label class="control-label" for="inputFname">Full name <sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" id="inputFname" name="name" placeholder="Full Name">
+			</div>
+		 </div>
+		<div class="control-group">
+		<label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+		<div class="controls">
+		  <input type="text" name="email" placeholder="Email">
+		</div>
+	  </div>	  
+		<div class="control-group">
+		<label class="control-label">Password <sup>*</sup></label>
+		<div class="controls">
+		  <input type="password" name="password" placeholder="Password">
+		</div>
+	  </div>
+	  <div class="control-group">
+		<label class="control-label">Password retype <sup>*</sup></label>
+		<div class="controls">
+		  <input type="password" name="passwordretype" placeholder="Password retype">
+		</div>
+	  </div>
+		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+	<div class="control-group">
+		<div class="controls">
+		 <input type="submit" name="submitAccount" value="Sign Up" class="exclusive shopBtn">
+		</div>
+	</div>
+	</form>
+</div>
+</div>

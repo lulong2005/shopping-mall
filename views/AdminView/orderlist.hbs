@@ -1,0 +1,61 @@
+<div class="content-wrapper">
+    <h1>Manage Order List</h1></br>
+
+        <form role="form-horizontal" method="POST" >
+            <table id="rounded-corner" summary="2007 Major IT Companies' Profit" >
+                <thead>
+                <tr>
+                    <th scope="col" class="rounded-company"></th>
+                    <th scope="col" class="rounded"><b>Code</b></th>
+                    <th scope="col" class="rounded"><b>Customer</b></th>
+                    <!--<th scope="col" class="rounded">Details</th>-->
+                    <th scope="col" class="rounded"><b>Date</b></th>
+                    <th scope="col" class="rounded"><b>Status</b></th>
+                    <th scope="col" class="rounded-q4"><b>Detail</b></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="6" class="rounded-foot-left"><em>Members of shop</em></td>
+
+
+                </tr>
+                </tfoot>
+                <tbody>
+
+                {{#each orders}}
+                    <tr>
+                        <td><input type="checkbox" name="id" class="id" value="{{_id}}" /></td>
+                        <td id="code" name="code">{{code}}</td>
+                        <td id="customer" name="customer">{{customer}}</td>
+                        <!--<td id="detail" name="detail">{{detail}}</td>-->
+                        <td id="date" name="date">{{date}}</td>
+                        <td id="status" name="status">{{status}}</td>
+                            <!--<select class="form-control" id="state" name="state">
+
+                                <option value="pending">pending</option>
+                                <option value="shipping">shipping</option>
+                                <option value="delivered">delivered</option>
+
+                            </select>-->
+
+
+                        <td>
+                            <a href="/order_list/detail/{{_id}}"><img src="/Admin/images/search.png" alt="" title="" border="0" /></a>
+                        </td>
+
+                    </tr>
+                {{/each}}
+
+
+
+                </tbody>
+
+            </table><br>
+
+            <div class="col-sm-offset-9 col-sm-10">
+                <button type="submit" class="btn btn-danger">Delete order</button>
+            </div>
+        </form>
+
+</div>

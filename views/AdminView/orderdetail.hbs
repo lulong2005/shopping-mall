@@ -1,0 +1,103 @@
+<div class="content-wrapper">
+    <h1>Detail Order </h1><br>
+
+        {{#if order}}
+        <form class="form-horizontal" method="POST" >
+
+            <div class="form-group">
+                <label style = "font-size: 14px; font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="code">Order Code</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px; font-family: Arial, Helvetica, sans-serif; " class="control-label">{{order.code}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="customer">Customer</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label">{{order.customer}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="date">Time</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label">{{order.time}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="phone">Phone</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label">{{order.phone}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="address">Address</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label">{{order.address}}</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style = "font-size: 14px;font-family: Arial, Helvetica, sans-serif;" class="control-label col-sm-3" for="code">Status</label>
+                <div class="col-sm-3">
+                    <select class="form-control" id="status_order" name="status_order">
+                        <option value="pending">pending</option>
+                        <option value="shipping">shipping</option>
+                        <option value="delivered">delivered</option>
+                    </select>
+                </div>
+            </div>
+
+            <table id="rounded-corner" summary="2007 Major IT Companies' Profit" >
+                <thead>
+                <tr>
+                    <th scope="col" class="rounded-company"></th>
+                    <th scope="col" class="rounded"><b>Product</b></th>
+                    <th scope="col" class="rounded"><b>Size</b></th>
+                    <th scope="col" class="rounded"><b>Quantity</b></th>
+                    <th scope="col" class="rounded-q4"><b>Price</b></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="6" class="rounded-foot-left"><em>Total: <strong>{{order.total}} $</strong></em></td>
+
+
+                </tr>
+                </tfoot>
+                <tbody>
+
+                {{#each order.products}}
+                    <tr>
+                        <td><!--<input type="checkbox" name="id" class="id" value="{{_id}}" />--></td>
+                        <td id="name" name="name">{{title}}</td>
+                        <td id="size" name="size">{{size}}</td>
+                        <td id="quantity" name="quantity">{{quantity}}</td>
+                        <td id="price" name="price">{{price}}</td>
+
+                        <!--<select class="form-control" id="state" name="state">
+
+                            <option value="pending">pending</option>
+                            <option value="shipping">shipping</option>
+                            <option value="delivered">delivered</option>
+
+                        </select>-->
+
+
+                    </tr>
+                {{/each}}
+
+
+
+                </tbody>
+
+            </table><br>
+
+            <div class="col-sm-offset-8 col-sm-10">
+                <button type="submit" class="btn btn-danger">Update Status</button>
+            </div>
+        </form>
+        {{/if}}
+    </div>

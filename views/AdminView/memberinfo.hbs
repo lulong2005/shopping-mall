@@ -1,0 +1,66 @@
+<div class="content-wrapper">
+
+    <h1>Member Infomation</h1></br>
+
+    {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{# each messages }}
+                <p>{{this}}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+
+
+    <form class="form-horizontal"  method="post">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        {{#if user}}
+            <div class="col-sm-offset-5 col-sm-5">
+                {{#if user.avatar}}
+                    <img src="{{user.avatar}}"  style="max-width: 200px;max-height: 200px;" alt="..." class="img-responsive"></br>
+                {{else}}
+                    <img src="https://www.queenoftickets.com/media/wysiwyg/ausopen/Roger-Federer.jpg"  style="max-width: 200px;max-height: 200px;" alt="..." class="img-responsive"></br>
+                {{/if}}
+            </div>
+            <div class="form-group">
+
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="name">Full name</label>
+                <div class="col-sm-5">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Full name" value="{{user.name}}">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="email">Email</label>
+                <div class="col-sm-5">
+                    <label style = "font-size: 14px;" class="control-label">{{user.email}}</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="role">Role</label>
+                <div class="col-sm-5">
+                    <!--<label style = "font-size: 14px;" class="control-label">{{userProfile.role}}</label>-->
+
+                    <div class="radio">
+                        <label><input type="radio" name="role" id="admin" value="admin" {{admin}}>Admin</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="role" id="member" value="member" {{member}}>Member</label>
+                    </div>
+                </div>
+            </div>
+        <div class="form-group">
+            <label style = "font-size: 14px;" class="control-label col-sm-4" for="active">Active</label>
+        <div class="col-sm-5">
+            <!--<label style = "font-size: 14px;" class="control-label">{{userProfile.role}}</label>-->
+
+            <div class="radio">
+                <label><input type="radio" name="active" id="active" value="active" {{active}}></label>
+            </div>
+        </div>
+            <div class="col-sm-offset-5 col-sm-6">
+                <input type="submit" class="btn btn-primary" value="Confirm">
+            </div>
+        {{/if}}
+
+    </form>
+</div>

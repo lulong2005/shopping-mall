@@ -1,0 +1,35 @@
+<div class="span9">
+	{{#if hasErrors}}
+		<div class="alert alert-danger">
+			{{# each messages }}
+			<p>{{this}}</p>
+			{{/each}}
+		</div>
+	{{/if}}
+	<div class="well">
+	<form class="form-horizontal" action="/order/info" method="post">
+		<h3>Delivery information</h3>
+		
+		<div class="control-group">
+		<label class="control-label">Address <sup>*</sup></label>
+		<div class="controls">
+		  <input type="text" name="address" placeholder="Address">
+		</div>
+	  </div>	  
+		<div class="control-group">
+		<label class="control-label">Phone <sup>*</sup></label>
+		<div class="controls">
+		  <input  type="text" name="phone" placeholder="Phone">
+		</div>
+	  </div>
+	  
+		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+	<div class="control-group">
+		<div class="controls">
+		 <input type="submit" name="submitAccount" value="Confirm" class="exclusive shopBtn">
+		</div>
+	</div>
+	
+	</form>
+</div>
+</div>

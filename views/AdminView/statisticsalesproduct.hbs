@@ -1,0 +1,73 @@
+<div class="content-wrapper">
+    <h1>Statistic top 10 best salse</h1>
+    <br>
+    <div id="chartContainer" style="height: 300px; width: 100%;"> </div>
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-body"><h3>Choose an option</h3></div><br>
+        <form class="form-horizontal" method="post">
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-2">
+                    <input type="radio" name="statistic" value="products" > Products
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-2">
+                    <input type="radio" name="statistic" value="category" > Category
+                </div>
+                <div class="col-sm-3">
+                <select class="form-control" id="category" name="category">
+                    {{#each categories}}
+                        <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    {{#if product}}
+    var data = [];
+    var p;
+    var x=0;
+    {{#each product_statistic}}
+        x+=10;
+        p = {
+
+            label: "{{title}}",
+            y: {{count}}
+        }
+        data.push(p);
+    {{/each}}
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer",
+                {
+                    animationEnabled: true,
+                    theme: "theme2",
+                    //exportEnabled: true,
+                    title:{
+                        text: "Top 10 product sales"
+                    },
+                    data: [
+                        {
+                            type: "column", //change type to bar, line, area, pie, etc
+                            dataPoints: data
+                        }
+                    ]
+                });
+
+        chart.render();
+    }
+    {{/if}}
+</script>

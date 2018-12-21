@@ -1,0 +1,52 @@
+<div class="content-wrapper" >
+    <h1>Manage Members</h1></br>
+    <div class="col-md-12 col-md-offset-2">
+        <form role="form-horizontal" method="POST" >
+            <table id="rounded-corner" summary="2007 Major IT Companies' Profit" >
+                <thead>
+                <tr>
+                    <th scope="col" class="rounded-company"></th>
+                    <th scope="col" class="rounded"><b>Name</b></th>
+                    <th scope="col" class="rounded"><b>Email</b></th>
+                    <!--<th scope="col" class="rounded">Details</th>-->
+                    <th scope="col" class="rounded"><b>Role</b></th>
+                    <th scope="col" class="rounded"><b>Active</b></th>
+                    <th scope="col" class="rounded-q4"><b>Edit</b></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="6" class="rounded-foot-left"><em>Members of shop</em></td>
+
+
+                </tr>
+                </tfoot>
+                <tbody>
+
+                {{#each users}}
+                    <tr>
+                        <td><input type="checkbox" name="id" class="id" value="{{_id}}" /></td>
+                        <td id="name" name="name">{{name}}</td>
+                        <td id="email" name="email">{{email}}</td>
+                        <!--<td id="detail" name="detail">{{detail}}</td>-->
+                        <td id="role" name="role">{{role}}</td>
+                        <td id="active" name ="active">{{active}}</td>
+                        <td>
+                            <a href="/admin/members/edit/{{_id}}"><img src="/Admin/images/user_edit.png" alt="" title="" border="0" /></a>
+                        </td>
+
+                    </tr>
+                {{/each}}
+
+
+
+                </tbody>
+
+            </table><br>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div class="col-sm-offset-6 col-sm-6">
+                <button type="submit" class="btn btn-danger">Delete members</button>
+            </div>
+        </form>
+    </div>
+</div>

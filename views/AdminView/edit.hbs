@@ -1,0 +1,100 @@
+<div class="content-wrapper">
+
+    {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{# each messages }}
+                <p>{{this}}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+    <div class="box-header with-border">
+      <h3 class="box-title">Product Information</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form" method="POST" enctype="multipart/form-data">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="exampleInputTitle">Title</label>
+          <input type="text" class="form-control" id="exampleInputTitle" placeholder="Enter title..." name="title" value="{{item.title}}">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputImagePath">Image Path</label>
+          <!--<input type="text" class="form-control" id="exampleInputImagePath" placeholder="Enter image path..." name="path" value="{{item.imagePath}}">
+            -->
+            <input type="file" accept="image/*" name="productimg1" id="productimg1" onchange="loadFile(event,'output1')"><br>
+            <img id="output1" style="max-width: 150px; max-height: 150px;" src="{{item.imagePath.[0]}}"><br>
+            <input type="hidden" name="pathimg1" value="{{item.imagePath.[0]}}"><br>
+            <input type="file" accept="image/*" name="productimg2" id="productimg2" onchange="loadFile(event,'output2')"><br>
+            <img id="output2" style="max-width: 150px; max-height: 150px;" src="{{item.imagePath.[1]}}"><br>
+            <input type="hidden" name="pathimg2" value="{{item.imagePath.[1]}}"><br>
+            <input type="file" accept="image/*" name="productimg3" id="productimg3" onchange="loadFile(event,'output3')"><br>
+            <img id="output3" style="max-width: 150px; max-height: 150px;" src="{{item.imagePath.[2]}}"><br>
+            <input type="hidden" name="pathimg3" value="{{item.imagePath.[2]}}"><br>
+            <!--<input type="hidden" name="pathimg" value="{{item.imagePath}}">-->
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputImagePath">Price</label>
+          <input type="text" class="form-control" id="exampleInputImagePath" placeholder="Enter price..." name="price" value="{{item.price}}">
+        </div>
+
+          <div class="form-group">
+              <label for="exampleInputImagePath">Size & Quantity</label>
+              <table id="myTable" class="table table-bordered">
+                  <tr>
+                      <th>Size</th>
+                      <th>Quantity</th>
+                  </tr>
+                  {{#each sizeqty}}
+                      <tr>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="size" name="size" value="{{size}}">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="qty" name="qty" value="{{qty}}">
+                              </div>
+                          </td>
+                      </tr>
+                  {{/each}}
+              </table>
+              <div class="set-form">
+                  <input type="button" id="more_fields" onclick="add_fields();" value="Add More" class="btn btn-info" />
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="exampleInputImagePath">Category</label>
+              <select class="form-control" id="category" name="category">
+                  {{#each categories}}
+                      <option value="{{_id}}">{{name}}</option>
+                  {{/each}}
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputImagePath">Branch</label>
+              <select class="form-control" id="brand" name="brand">
+                  {{#each brands}}
+                      <option value="{{_id}}">{{name}}</option>
+                  {{/each}}
+              </select>
+          </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" placeholder="Enter ..." name="description">{{item.description}}</textarea>
+        </div>
+
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer">
+        <input class="btn btn-primary" value="Save" type="submit">
+      </div>
+    </form>
+</div>
+

@@ -1,0 +1,3 @@
+*.js text -crlf -diff -merge=union
+*.hbs text -crlf -diff -merge=union
+*.json text -crlf -diff -merge=union

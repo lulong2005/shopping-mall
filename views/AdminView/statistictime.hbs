@@ -1,0 +1,270 @@
+<div class="content-wrapper">
+    <h1>Statistic</h1>
+
+    <br>
+    <div id="chartstatistictime" style="height: 300px; width: 100%;"> </div>
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-body"><h3>Choose an option</h3></div><br>
+            <form class="form-horizontal" method="post">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <input type="radio" name="statistic" value="date" > Date
+                    </div>
+                     <div class="col-sm-3">
+                        From<input type="date" class="form-control" id="datestart" placeholder="Choose a date" name="datestart">
+                    </div>
+                    <div class="col-sm-3">
+                        To<input type="date" class="form-control" id="dateend" placeholder="Choose a date" name="dateend">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <input type="radio" name="statistic" value="week" > Week
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="week" class="form-control" id="week" placeholder="Choose a week" name="week">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <input type="radio" name="statistic" value="month" > Month
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="month" class="form-control" id="month" placeholder="Choose a month" name="month">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <input type="radio" name="statistic" value="quater" > Quater of year
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="quater" placeholder="Enter quater/Year: 1/2017" name="quater">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <input type="radio" name="statistic" value="year" > Year
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="number" class="form-control" id="year" placeholder="Enter year" name="year">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <br>
+
+
+</div>
+
+<script>
+
+
+
+   {{#if year}}
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartstatistictime",
+                {
+                    animationEnabled: true,
+                    theme: "theme2",
+                    //exportEnabled: true,
+                    title:{
+                        text: "Sale figure graphics (Year {{year}})"
+                    },
+                    data: [
+                        {
+                            type: "line", //change type to bar, line, area, pie, etc
+                            dataPoints: [
+                                { label: "JAN", x: new Date(2012, 00, 1),y: {{years_statistic.[0]}} },
+                                { label: "FEB", x: new Date(2012, 01, 1),y: {{years_statistic.[1]}} },
+                                { label: "MAR", x: new Date(2012, 02, 1),y: {{years_statistic.[2]}} },
+                                { label: "APR", x: new Date(2012, 03, 1),y: {{years_statistic.[3]}} },
+                                { label: "MAY", x: new Date(2012, 04, 1),y: {{years_statistic.[4]}} },
+                                { label: "JUN", x: new Date(2012, 05, 1),y: {{years_statistic.[5]}} },
+                                { label: "JUL", x: new Date(2012, 06, 1),y: {{years_statistic.[6]}} },
+                                { label: "AUG", x: new Date(2012, 07, 1),y: {{years_statistic.[7]}} },
+                                { label: "SEP", x: new Date(2012, 08, 1),y: {{years_statistic.[8]}} },
+                                { label: "OCT", x: new Date(2012, 09, 1),y: {{years_statistic.[9]}} },
+                                { label: "NOV", x: new Date(2012, 10, 1),y: {{years_statistic.[10]}} },
+                                { label: "DEC", x: new Date(2012, 11, 1),y: {{years_statistic.[11]}} }
+                            ]
+                        }
+                    ]
+                });
+
+        chart.render();
+    };
+    {{/if}}
+   {{#if quater}}
+       var data = [];
+       var p;
+       {{#if quater1}}
+           p = {
+               label: "JAN",
+               //x: 10,
+               y: {{quater_statistic.[0]}}
+           }
+           data.push(p);
+           p = {
+               label: "FEB",
+             //  x: 20,
+               y: {{quater_statistic.[1]}}
+           }
+           data.push(p);
+           p = {
+               label: "MAR",
+             //  x: 30,
+               y: {{quater_statistic.[2]}}
+           }
+           data.push(p);
+       {{/if}}
+           {{#if quater2}}
+           p = {
+               label: "APR",
+              // x: 10,
+               y: {{quater_statistic.[0]}}
+           }
+           data.push(p);
+           p = {
+               label: "MAY",
+             //  x: 20,
+               y: {{quater_statistic.[1]}}
+           }
+           data.push(p);
+           p = {
+               label: "JUN",
+             //  x: 30,
+               y: {{quater_statistic.[2]}}
+           }
+           data.push(p);
+           {{/if}}
+           {{#if quater3}}
+           p = {
+               label: "JUL",
+              // x: 10,
+               y: {{quater_statistic.[0]}}
+           }
+           data.push(p);
+           p = {
+               label: "AUG",
+              // x:20,
+               y: {{quater_statistic.[1]}}
+           }
+           data.push(p);
+           p = {
+               label: "SEP",
+              // x: 30,
+               y: {{quater_statistic.[2]}}
+           }
+           data.push(p);
+           {{/if}}
+           {{#if quater4}}
+           p = {
+               label: "OCT",
+             //  x: 10,
+               y: {{quater_statistic.[0]}}
+           }
+           data.push(p);
+           p = {
+               label: "NOV",
+               //x: 20,
+               y: {{quater_statistic.[1]}}
+           }
+           data.push(p);
+           p = {
+               label: "DEC",
+            //   x: 30,
+               y: {{quater_statistic.[2]}}
+           }
+           data.push(p);
+           {{/if}}
+       window.onload = function () {
+           var chart = new CanvasJS.Chart("chartstatistictime",
+                   {
+                       animationEnabled: true,
+                       theme: "theme2",
+                       //exportEnabled: true,
+                       title: {
+                           text: "Sale figure graphics (Quater: {{quater}})"
+                       },
+                       data: [
+                           {
+                               type: "line", //change type to bar, line, area, pie, etc
+                               dataPoints: data
+                           }
+                       ]
+                   }
+           );
+           chart.render();
+       };
+   {{/if}}
+   {{#if month}}
+   var data=[];
+   var p;
+       {{#each month_statistic}}
+         p = {
+          label: "{{time}}",
+          y: {{total}}
+        };
+        data.push(p);
+        {{/each}}
+   window.onload = function () {
+       var chart = new CanvasJS.Chart("chartstatistictime",
+               {
+                   animationEnabled: true,
+                   theme: "theme2",
+                   //exportEnabled: true,
+                   title:{
+                       text: "Sale figure graphics (Month {{month}})"
+                   },
+                   data: [
+                       {
+                           type: "line", //change type to bar, line, area, pie, etc
+                           dataPoints: data
+                       }
+                   ]
+               });
+
+       chart.render();
+   };
+
+   {{/if}}
+   {{#if range}}
+   var data=[];
+   var p;
+   {{#each range_statistic}}
+       p={
+         label: "{{time}}",
+         y:{{total}}
+       };
+       data.push(p);
+   {{/each}}
+   window.onload = function () {
+       var chart = new CanvasJS.Chart("chartstatistictime",
+               {
+                   animationEnabled: true,
+                   theme: "theme2",
+                   //exportEnabled: true,
+                   title: {
+                       text: "Sale figure graphics ({{range}})"
+                   },
+                   data: [
+                       {
+                           type: "line", //change type to bar, line, area, pie, etc
+                           dataPoints: data
+                       }
+                   ]
+               }
+       );
+       chart.render();
+   };
+
+   {{/if}}
+
+</script>

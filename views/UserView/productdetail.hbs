@@ -1,0 +1,142 @@
+	<div class="span9">
+    {{#if hasErrors}}
+		<div class="alert alert-danger">
+			{{# each messages }}
+			<p>{{this}}</p>
+			{{/each}}
+		</div>
+
+
+	{{/if}}
+	<div class="well well-small">
+	<div class="row-fluid">
+			<div class="span5">
+			<div id="myCarousel" class="carousel slide cntr">
+                <div class="carousel-inner">
+				<div class="item active">
+                   <a href="#"> <img src="{{product.imagePath.[0]}}" alt="" style="width:100%"></a>
+                  </div>
+				{{# each imagepath }}
+				     
+				 <div class="item">
+                   <a href="#"> <img src="{{this}}" alt="" style="width:100%"></a>
+                  </div>
+				 
+				  {{/each}}
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+			</div>
+			<div class="span7">
+				<h3>{{product.title}}</h3>
+				<hr class="soft"/>
+				
+				<form class="form-horizontal qtyFrm" method="post">
+				  <div class="control-group">
+					<label class="control-label" style="color:#008B00"><span>${{product.price}}</span></label>
+					<div class="controls">
+					<input type="number" class="span6" placeholder="Quantity" name="quantity">
+					</div>
+				  </div>
+				
+				  <div class="control-group">
+					<label class="control-label"><span>Size</span></label>
+					<div class="controls">
+					  <select class="span11" name="selectSize">
+					  {{# each product.size }}
+						  <option value="{{this}}">{{this}}</option> 
+						 {{/each}}
+						</select>
+					</div>
+				  </div>
+				 <h5>{{view}} View (s)</h5>
+				  <h4 style="color:red">{{qtyresult}}</h4>
+				  
+				  <button type="submit" class="shopBtn" name="btproduct" value="Addtocart"><span class=" icon-shopping-cart" ></span> Add to cart</button>
+				<!-- </form> -->
+			</div>
+			</div>
+				<hr class="softn clr"/>
+
+
+            <ul id="productDetail" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+              <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
+            
+            </ul>
+            <div id="myTabContent" class="tab-content tabWrapper">
+            <div class="tab-pane fade active in" id="home">
+			  <h4>Product Information</h4>
+                <table class="table table-striped">
+				<tbody>
+				<tr class="techSpecRow"><td class="techSpecTD1">Category:</td><td class="techSpecTD2">{{category.name}}</td></tr>
+				<tr class="techSpecRow"><td class="techSpecTD1">Brand:</td><td class="techSpecTD2">{{brand.name}}</td></tr>
+				
+				</tbody>
+				</table>
+				<p>{{product.description}}</p>
+				<h4>Comments</h4>
+			
+				<!-- <form class=" addComment"> -->
+					 <div class="form-group">
+					  <textarea rows="4" style="width: 98%" name="comment"  placeholder="Enter your comment here..."></textarea>	 
+				
+					 <input type="submit" name ="btproduct" value="Send" class="exclusive shopBtn bntComment pull-right">
+					 </div>
+				<!-- </form> -->
+				
+				
+				<div class="ajax-comment">
+				{{# each listComment }}
+					<div class="form-group">
+						<div class="pull-left">
+						  <img src="{{this.[0].avatar}}" class="imgcircle" alt="User Image">
+						</div>
+						<div class="pull-left">
+						  <p style="margin: 0;padding: 0; color: #f89406"><strong>{{this.[0].name}}</strong></p>
+						  <p style="margin: 0;padding: 0; color: #888888">{{this.[1].time}}</p>
+						</div>
+					</div>
+					<br/>
+					<br/>
+					<p style="padding-left: 40px">{{this.[1].content}}</p>
+				{{/each}}
+				<!-- Thẻ pagination-nav -->
+				</div>
+				
+			</div>
+			</form>
+				
+				
+			
+		<div class="tab-pane fade" id="profile">
+		{{# each proListRelate }}
+			<div class="row-fluid">	  
+				<div class="span2">
+					<img src="{{this.imagePath.[0]}}" alt="">
+				</div>
+				<div class="span6">
+					<h5>{{ this.title}} </h5>
+					<p>{{this.description}}</p>
+				</div>
+				<div class="span4 alignR">
+					<form class="form-horizontal qtyFrm" method="post">
+						<h3> ${{ this.price}}</h3>
+						<br>
+						<div>
+						  <a href="/viewproduct/detail/{{this.id}}" class="shopBtn">VIEW</a>
+						 </div>
+					</form>
+				</div>
+			</div>
+			{{/each}}
+		<hr class="soft"/>
+		
+		
+		</div>
+
+		</div>
+
+</div>
+</div>

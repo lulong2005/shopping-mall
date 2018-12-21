@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+
+    <h1>All Products</h1></br>
+
+    <div class="col-md-12 ">
+        <form role="form-horizontal" method="POST" >
+            <table id="rounded-corner" summary="2007 Major IT Companies' Profit" >
+                <thead>
+                <tr>
+                    <th scope="col" class="rounded-company"></th>
+                    <th scope="col" class="rounded"><b>Image</b></th>
+                    <th scope="col" class="rounded"><b>Title</b></th>
+                    <!--<th scope="col" class="rounded">Details</th>-->
+                    <th scope="col" class="rounded"><b>Price</b></th>
+                    <th scope="col" class="rounded"><b>Category</b></th>
+                    <th scope="col" class="rounded"><b>Brand</b></th>
+                    <th scope="col" class="rounded-q4"><b>Edit</b></th>
+                </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="9" class="rounded-foot-left"><em>Product of shop</em></td>
+
+
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                {{#each products}}
+
+                    <tr>
+                        <td><!--<input type="checkbox" name="id" class="id" value="{{_id}}" />--></td>
+                        <td>
+                            <img src="{{imagePath.[0]}}" alt="..." class="img-responsive" style="max-width: 100px;max-height: 100px">
+                        </td>
+                        <td id="title" name="title">{{title}}</td>
+                        <td id="price" name="price">{{price}}</td>
+                        <td id="category" name="category">{{category}}</td>
+                        <td id="brand" name ="brand">{{brand}}</td>
+                        <td>
+                            <a href="/products/detail/{{_id}}"><img src="/Admin/images/user_edit.png" alt="" title="" border="0" /></a>
+                        </td>
+
+                    </tr>
+
+                {{/each}}
+
+
+
+                </tbody>
+
+            </table><br>
+
+
+
+        </form>
+    </div>
+</div>
+

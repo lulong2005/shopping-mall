@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping Mall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="stylesheet" href="/Admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- Customize styles -->
+    <link href="/style.css" rel="stylesheet"/>
+	<link href="/stylepagination.css" rel="stylesheet"/>
+    <!-- font awesome styles -->
+	<link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+  </head>
+<body>
+<!-- 
+	Upper Header Section 
+-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="topNav">
+		<div class="container">
+			<div class="alignR">
+				<div class="pull-left socialNw">
+					
+				</div>
+				<a class="active" href="/"> <span class="icon-home"></span> Home</a> 
+				{{#if login}}
+				<a href="/user/profile"><span class="icon-user"></span>{{userProfile.name}}</a> 
+				<a href="/user/logout"><span class="fa fa-sign-out"></span>Log Out</a>
+				{{ else }}
+				<a href="/user/signup"><span class="icon-edit"></span>Sign Up</a> 
+				<a href="/user/signin"><span class="fa fa-sign-in"></span>Sign In</a> 
+				{{/if}}
+				<a href="/order/orderlist"><span class="icon-shopping-cart"></span> {{items}} Item(s)</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+Lower Header Section 
+-->
+<div class="container">
+<div id="gototop"> </div>
+<header id="header">
+<div class="row">
+	<div class="span4">
+	<h1>
+	<a class="logo" href="/">
+		<img src="/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+	</a>
+	</h1>
+	</div>
+	<div class="span4">
+	
+	</div>
+	
+</div>
+</header>
+
+<!--
+Navigation Bar Section 
+-->
+<div class="navbar">
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class="active"><a href="/">Home</a></li>
+			
+			</ul>
+			<ul class="nav pull-right">
+			
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	</div>
+<!-- 
+Body Section 
+-->
+	<div class="row">
+<div id="sidebar" class="span3">
+<form id="sort-product" action="/viewproduct/filter" method="post" >
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<div class="control-group">
+		<span><strong>Price</strong></span>
+			<label class="checkbox">
+			<input type="radio" name="price" value="1" class="price"> Uder $70
+			</label>
+			<label class="checkbox">
+			<input type="radio" name="price" value="2" class="price"> Above $70
+			</label>
+		</div>
+		<div class="control-group">
+		<span><strong>Categories</strong></span>
+			{{# each categories }}
+			<label class="checkbox">
+			<input type="radio" name="category" value="{{this.id}}" class="category"> {{this.name}}
+			</label>
+			{{/each}}
+		</div>
+		<div class="control-group">
+		<span><strong>Brands</strong></span>
+			{{# each brands }}
+			<label class="checkbox">
+			<input type="radio" name="brand" value="{{this.id}}" class="brand"> {{this.name}}
+			</label>
+			{{/each}}
+		</div>
+		<div class="control-group">
+		<span><strong>Size</strong></span>
+		<div class="controls">
+		<select class="span1 size" name="size">
+			<option value="35">35</option>
+			<option value="36">36</option>
+			<option value="37">37</option>
+			<option value="38">38</option>
+			<option value="39">39</option>
+			<option value="40">40</option>
+			<option value="S">S</option>
+			<option value="M">M</option>
+			<option value="L">L</option>
+			<option value="XL">XL</option>
+			<option value="XXL">XXL</option>
+		</select>
+		</div>
+		</div>
+		<li style="border:0"> &nbsp;</li>
+		<input type="submit" name="submitSearch" value="Filter" class="shopBtn">
+		
+		<div class="control-group">
+		<br>
+			<input type="text" name= "productName" placeholder="Search" class="search-query span2">
+		</div>
+			<input type="submit" name="submitSearch" value="Search" class="shopBtn">
+	</ul>
+</div>
+</form>
+
+
+<div class="well well-small">
+	<ul class="nav nav-list">
+		{{# each categories }}
+		<li><a href="/viewproduct/category/{{this.id}}"><span class="icon-chevron-right"></span>{{this.name}}</a></li>
+		{{/each}}
+		<li style="border:0"> &nbsp;</li>
+		<li> <a class="totalInCart" href="#"><strong>Categories</strong></a></li>
+	</ul>
+</div>
+
+	  <div class="well well-small" >
+	  
+		  <ul class="nav nav-list">
+		  {{# each brands }}
+			<li><a href="/viewproduct/brand/{{this.id}}"><span class="icon-chevron-right"></span>{{this.name}}</a></li>
+		  {{/each}}
+			<li style="border:0"> &nbsp;</li>
+			<li> <a class="totalInCart" href="#"><strong>Brands</strong></a></li>
+			
+		</ul>
+	  </div>
+			
+			
+			<br>
+			<br>
+			<ul class="nav nav-list promowrapper">
+			
+		  </ul>
+
+	</div>
+	{{{body}}}
+	</div>
+<!-- 
+Clients 
+-->
+
+
+<!--
+Footer
+-->
+<footer class="footer">
+<div class="row-fluid">
+<div class="span2">
+<h5>Your Account</h5>
+<a href="/user/profile">PROFILE</a><br>
+<a href="/order/orderhistory">ORDER HISTORY</a><br>
+ </div>
+<div class="span2">
+<h5>Information</h5>
+
+<a href="#">ABOUT US</a><br>
+ </div>
+
+ <div class="span6">
+<h5>Describe our website</h5>
+This website sells fashion products for women include of: shirt,
+ jacket and trouser.
+ </div>
+ </div>
+</footer>
+</div><!-- /container -->
+
+<div class="copyright">
+<div class="container">
+	
+	<span>Copyright &copy; 2017<br>Shopping Mall</span>
+</div>
+</div>
+<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.js"></script>
+	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/jquery.easing-1.3.min.js"></script>
+    <script src="/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="/assets/js/shop.js"></script>
+	<script src="/Admin/javascripts/scripts.js"></script>
+	<script src="/User/Javascript/order.js"></script>
+	<script src="/javascripts/MyPaginationClass.js"></script>
+  </body>
+</html>

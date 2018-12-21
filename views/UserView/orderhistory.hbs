@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="span9">
+	<div class="well well-small">
+		<h1>Order History <small class="pull-right"> {{item}} Items were ordered </small></h1>
+	<hr class="soften"/>	
+	<form class="form-horizontal" action="/order/orderlist" method="post">
+	<table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+				<th>Date</th>
+                  <th>Product</th>
+                  <th>Size</th>
+                  
+                  <th>Unit price</th>
+                  <th>Quantity </th>
+                  <th>Total Price</th>
+				  <th>Status</th>
+				</tr>
+              </thead>
+			 
+              <tbody>
+			  {{# each order_list }}
+                <tr>
+				  <td>{{this.date}}</td>
+                  <td><img width="100" src="{{this.image}}" alt=""></td>
+                  <td>{{this.size}}</td>
+                  
+                  <td>${{this.unitprice}}</td>
+                  <td>{{this.quantity}}</td>
+                  <td>${{this.totalprice}}</td>
+				  <td>{{this.status}}</td>
+                </tr>
+				{{/each}}
+                <tr>
+                  <td colspan="6" class="alignR" style = "color:#f89406">Total products:	</td>
+                  <td style = "color:#f89406"> ${{totalprice}}</td>
+                </tr>
+			</tbody>
+         </table><br/>
+	
+	</form>
+</div>
+</div>
+</div>

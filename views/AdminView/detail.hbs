@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+
+    <div class="thumbnail">
+
+        <img src="{{item.imagePath.[0]}}" alt="..." class="img-responsive"><br>
+        <img src="{{item.imagePath.[1]}}" alt="..." class="img-responsive"><br>
+        <img src="{{item.imagePath.[2]}}" alt="..." class="img-responsive"><br>
+
+        <div class="caption">
+        <h3>{{item.title}}</h3>
+        
+		<div class="price">${{item.price}}</div>
+		<p class="description">{{item.description}}</p>
+        <div class="clearfix">
+		<form name="EditDelete" method="POST">
+		{{# if login }}
+            <input class="btn btn-success pull-left" name="choose" value="Edit" type="submit">
+            <input class="btn btn-danger pull-right" name="choose" value="Delete" type="submit">
+		{{/if}}
+		</form>
+		</div>
+      </div>
+    </div>
+	
+</div>
+

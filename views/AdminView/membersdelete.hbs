@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+    <h1>Delete Members</h1></br>
+    <div class="col-md-12 col-md-offset-2">
+        <h3>Do you want to delete?</h3><br>
+        <form class="form-horizontal" method="post">
+            <div class="col-md-4 col-md-offset-2 list-group">
+                {{#each users}}
+                    <a href="#" class="list-group-item" name="email" style="text-align: center;">{{email}}</a>
+                {{/each}}
+
+
+            </div><br>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div class="col-sm-offset-3 col-sm-6">
+                 <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>

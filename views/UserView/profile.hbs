@@ -1,0 +1,75 @@
+<div class="span9">
+{{#if hasErrors}}
+	<div class="alert alert-danger">
+		{{# each messages }}
+			<p>{{this}}</p>
+		{{/each}}
+	</div>
+{{/if}}
+<div class="well">
+    <form class="form-horizontal"  method="post" enctype="multipart/form-data" action="/user/profile?_csrf={{csrfToken}}" style="padding-left: 8%;">
+        <div class="control-group">
+			<div class="controls">
+            {{#if userProfile.avatar}}
+                <img src="{{userProfile.avatar}}"  style="max-width: 200px;max-height: 200px;" alt="..." class="img-responsive" id="output"></br>
+            {{else}}
+                <img src="https://www.queenoftickets.com/media/wysiwyg/ausopen/Roger-Federer.jpg"  style="max-width: 200px;max-height: 200px;" alt="..." class="img-responsive" id="output"></br>
+            {{/if}}
+
+            <input type="file" accept="image/*" name="avatarimg" id="avatarimg"  onchange="loadFile(event,'output')"><br>
+			</div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputFname">Full name</label>
+            <div class="controls">
+                <input type="text" id="inputFname" name="name" value="{{userProfile.name}}">
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label style = "font-size: 14px;" class="control-label col-sm-4" for="email">Email</label>
+            <div class="controls">
+                  <label style = "font-size: 14px;text-align:left;" class="control-label">{{userProfile.email}}</label>
+            </div>
+        </div>
+        <div class="control-group">
+            <label style = "font-size: 14px;" class="control-label col-sm-4" for="role">Role</label>
+            <div class="controls">
+                <label style = "font-size: 14px;text-align:left;" class="control-label col-sm-4">{{userProfile.role}}</label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a href="#" id="changepass"><label style = "text-align:left;" class="control-label">Change password</label></a>
+            </div>
+        </div>
+        <changepass hidden>
+            <div class="control-group">
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="oldpass">Old password</label>
+                <div class="controls">
+                    <input type="password" id="oldpass" name="oldpass" class="form-control" placeholder="Old Password">
+                </div>
+            </div>
+            <div class="control-group">
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="newpass">New password</label>
+                <div class="controls">
+                    <input type="password" id="newpass" name="newpass" class="form-control" placeholder="New Password">
+                </div>
+            </div>
+            <div class="control-group">
+                <label style = "font-size: 14px;" class="control-label col-sm-4" for="passwordretype">Password retype</label>
+                <div class="controls">
+                    <input type="password" id="passwordretype" name="passwordretype" class="form-control" placeholder="Retype Password">
+                </div>
+            </div>
+        </changepass>
+		
+		<div class="control-group">
+        <div class="controls">
+            <input type="submit" class="exclusive shopBtn" value="Confirm">
+        </div>
+		</div>
+    </form>
+</div>
+</div>

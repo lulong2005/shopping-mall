@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="span9">
+    {{#if hasErrors}}
+		<div class="alert alert-danger">
+			{{# each messages }}
+			<p>{{this}}</p>
+			{{/each}}
+		</div>
+	{{/if}}
+	<div class="well well-small">
+		<h1>Check Out <small class="pull-right"> {{items}} Items are in the cart </small></h1>
+	<hr class="soften"/>	
+	<form class="form-horizontal" action="/order/orderlist" method="post">
+	<table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+				<th>Number</th>
+                  <th>Product</th>
+                  <th>Size</th>
+                  
+                  <th>Unit price</th>
+                  <th>Quanty </th>
+                  <th>Total Price</th>
+				  <th>Remove</th>
+				</tr>
+              </thead>
+			 
+              <tbody>
+			  {{# each orderlist }}
+                <tr>
+					<td>{{@index}}</td>
+                  <td><img width="100" src="{{this.[0].imagePath.[0]}}" alt=""></td>
+                  <td>{{this.[1]}}</td>
+                  
+                  <td>${{this.[0].price}}</td>
+                  <td>
+
+					<input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="number" value="{{this.[2]}}" name="qty">
+				 
+				</td>
+                  <td>${{this.[3]}}</td>
+				  <td><a href="/order/remove/{{@index}}" class="btn btn-danger"><span class="icon-trash"></span></a> </td>
+                </tr>
+				{{/each}}
+                <tr>
+                  <td colspan="6" class="alignR" style = "color:#f89406">Total products:	</td>
+                  <td style = "color:#f89406"> ${{totalprice}}</td>
+                </tr>
+			</tbody>
+         </table><br/>
+		
+			
+	<a href="/" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+	<input type="submit" name="submitAccount" value="Next" class="shopBtn btn-large pull-right">
+	</form>
+</div>
+</div>
+</div>
